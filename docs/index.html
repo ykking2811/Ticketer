@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ticketer — Book Your Seat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">🎬</span>
+        <span class="logo-text">TICKETER</span>
+      </div>
+      <p class="tagline">Reserve your perfect seat</p>
+    </div>
+  </header>
+
+  <main class="main-layout">
+
+    <!-- Left Column -->
+    <section class="booking-section">
+
+      <!-- Movie Selector -->
+      <div class="card movie-selector-card">
+        <h2 class="card-title">Choose a Film</h2>
+
+        <div class="movie-picker">
+
+          <!-- Poster -->
+          <div class="poster-wrap" id="posterWrap">
+            <div class="poster-placeholder" id="posterPlaceholder">
+              <span>🎞️</span>
+              <p>Select a movie</p>
+            </div>
+            <img id="moviePoster" class="movie-poster hidden" alt="Movie Poster" />
+          </div>
+
+          <!-- Selector + meta -->
+          <div class="picker-right">
+            <div class="select-wrapper">
+              <select id="movieSelect">
+                <option value="">— Select a movie —</option>
+              </select>
+              <span class="select-arrow">▾</span>
+            </div>
+            <div id="movieMeta" class="movie-meta hidden">
+              <span id="movieGenre" class="badge badge-genre"></span>
+              <span id="moviePrice" class="badge badge-price"></span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Seating Matrix -->
+      <div class="card seating-card">
+        <h2 class="card-title">Select Seats</h2>
+        <div class="screen-wrap">
+          <div class="screen-bar"></div>
+          <p class="screen-label">SCREEN</p>
+        </div>
+        <div id="seatGrid" class="seat-grid"></div>
+        <div class="seat-legend">
+          <div class="legend-item"><div class="legend-dot available"></div><span>Available</span></div>
+          <div class="legend-item"><div class="legend-dot selected"></div><span>Selected</span></div>
+          <div class="legend-item"><div class="legend-dot booked"></div><span>Booked</span></div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Right Column: Checkout -->
+    <aside class="checkout-section">
+      <div class="card checkout-card">
+        <h2 class="card-title">Your Order</h2>
+
+        <div class="order-summary">
+          <div class="summary-row">
+            <span class="summary-label">Film</span>
+            <span class="summary-value" id="summaryMovie">—</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Seats</span>
+            <span class="summary-value seat-pills" id="summarySeats">—</span>
+          </div>
+          <div class="summary-divider"></div>
+          <div class="summary-row total-row">
+            <span class="summary-label">Total</span>
+            <span class="summary-value total-price" id="summaryTotal">₹0</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="customerName">Full Name</label>
+          <input type="text" id="customerName" placeholder="e.g. Arjun Sharma" autocomplete="off"/>
+        </div>
+
+        <div class="form-group">
+          <label for="customerPhone">Phone Number</label>
+          <input type="tel" id="customerPhone" placeholder="e.g. 9876543210" autocomplete="off"/>
+        </div>
+
+        <button id="confirmBtn" class="confirm-btn" disabled>
+          <span class="btn-text">Confirm Booking</span>
+          <span class="btn-loader hidden"></span>
+        </button>
+
+        <p id="formError" class="form-error hidden"></p>
+      </div>
+
+      <div class="card bookings-card">
+        <div class="bookings-header">
+          <h2 class="card-title">Recent Bookings</h2>
+          <button id="refreshBookingsBtn" class="icon-btn" title="Refresh">↻</button>
+        </div>
+        <div id="bookingsList" class="bookings-list">
+          <p class="empty-state">No bookings yet.</p>
+        </div>
+      </div>
+    </aside>
+    <button id="clearBookingsBtn" class="icon-btn" title="Clear all bookings">🗑</button>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2025 Ticketer. All seats reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
